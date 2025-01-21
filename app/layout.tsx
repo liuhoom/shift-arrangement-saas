@@ -33,7 +33,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             disableTransitionOnChange
             enableColorScheme
           >
-            <Navbar />
+            {/* <Navbar /> */}
             {children}
           </ThemeProvider>
         </body>
