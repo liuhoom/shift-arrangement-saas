@@ -10,7 +10,7 @@ import { CommandMenu } from '@/components/command-menu'
 export function Navbar() {
   return (
     <div className='flex items-center p-4 border-b'>
-      <div className='justify-start'>
+      <div className='justify-start hidden md:inline-flex'>
         <Link href='/' className='flex items-center'>
           <div className='h-6 w-6 relative'>
             <Image src='/logo.png' alt='logo-image' fill />

@@ -21,6 +21,13 @@ import {
   CommandShortcut,
 } from '@/components/ui/command'
 
+interface DocsType {
+  title: string
+  href?: string
+  disabled?: boolean
+  external?: boolean
+}
+
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter()
   const [open, setOpen] = React.useState(false)
@@ -75,7 +82,7 @@ export function CommandMenu({ ...props }: DialogProps) {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading='Links'>
             {docsConfig.mainNav
-              .filter((navitem) => !navitem.external)
+              .filter((navitem: DocsType) => !navitem.external)
               .map((navItem) => (
                 <CommandItem
                   key={navItem.href}
@@ -89,9 +96,9 @@ export function CommandMenu({ ...props }: DialogProps) {
                 </CommandItem>
               ))}
           </CommandGroup>
-          {docsConfig.sidebarNav.map((group) => (
+          {docsConfig.sidebarNav.map((group: any) => (
             <CommandGroup key={group.title} heading={group.title}>
-              {group.items.map((navItem) => (
+              {group.items.map((navItem: DocsType) => (
                 <CommandItem
                   key={navItem.href}
                   value={navItem.title}

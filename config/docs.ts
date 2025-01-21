@@ -1,3 +1,24 @@
+interface NavItem {
+  title: string
+  href?: string
+  disabled?: boolean
+  external?: boolean
+}
+
+interface NavItemWithChildren extends NavItem {
+  items: NavItemWithChildren[]
+}
+
+interface MainNavItem extends NavItem {}
+
+interface SidebarNavItem extends NavItemWithChildren {}
+
+interface DocsConfig {
+  mainNav: MainNavItem[]
+  sidebarNav: SidebarNavItem[]
+  chartsNav: SidebarNavItem[]
+}
+
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
