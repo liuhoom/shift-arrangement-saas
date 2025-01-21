@@ -1,14 +1,15 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
 
 import { siteConfig } from '@/config'
+import { ThemeProvider } from '@/components/providers/theme-provider'
+import { Navbar } from '@/components/navbar'
 
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
-
+const inter = Montserrat({ subsets: ['latin'], weight: '600' })
 export const metadata: Metadata = siteConfig
 
 export default function RootLayout({ children }: PropsWithChildren) {
@@ -24,7 +25,18 @@ export default function RootLayout({ children }: PropsWithChildren) {
       }}
     >
       <html lang='en'>
-        <body className={inter.className}>{children}</body>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+          enableColorScheme
+        >
+          <body className={inter.className}>
+            <Navbar />
+            {children}
+          </body>
+        </ThemeProvider>
       </html>
     </ClerkProvider>
   )
