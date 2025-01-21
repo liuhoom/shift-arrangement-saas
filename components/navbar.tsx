@@ -1,27 +1,24 @@
 import { UserButton } from '@clerk/nextjs'
 import Link from 'next/link'
+import Image from 'next/image'
 
-import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ModeSwitcher } from './theme-swither'
 import { links } from '@/config'
+import { CommandMenu } from '@/components/command-menu'
 
 export function Navbar() {
   return (
     <div className='flex items-center p-4 border-b'>
+      <div className='justify-start'>
+        <Link href='/' className='flex items-center'>
+          <div className='h-6 w-6 relative'>
+            <Image src='/logo.png' alt='logo-image' fill />
+          </div>
+        </Link>
+      </div>
       <div className='flex w-full justify-end'>
-        <Button
-          variant='outline'
-          className={cn(
-            'relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-56 xl:w-64'
-          )}
-        >
-          <span className='hidden lg:inline-flex'>Search ...</span>
-          <span className='inline-flex lg:hidden'>Search...</span>
-          <kbd className='pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex'>
-            <span className='text-xs'>⌘</span>K
-          </kbd>
-        </Button>
+        <CommandMenu />
         <Button variant='ghost' size='icon' className='h-8 w-8 px-0'>
           <Link href={links.sourceCode} target='_blank' rel='noreferrer'>
             <div className='h-4 w-4'>

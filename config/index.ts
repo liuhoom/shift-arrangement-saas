@@ -4,6 +4,7 @@ export const siteConfig: Metadata = {
   title: '排班系统-SAAS',
   description: '你的专属排班神器',
   keywords: [
+    '排班',
     'shift arrangement',
     'work schedule',
     'saas',
